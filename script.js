@@ -42,13 +42,13 @@ const galleryItems = {
     src: "assets/app/dashboard.png",
     alt: "Dashboard de LuxIA con un resumen del trabajo",
     width: 689,
-    height: 430,
+    height: 840,
   },
   causas: {
     src: "assets/app/causas.png",
     alt: "Vista de causas de LuxIA con controles para organizar expedientes",
     width: 674,
-    height: 164,
+    height: 843,
   },
   agenda: {
     src: "assets/app/agenda.png",
@@ -60,7 +60,7 @@ const galleryItems = {
     src: "assets/app/documentos.png",
     alt: "Vista documental de LuxIA con controles de búsqueda y carga",
     width: 667,
-    height: 220,
+    height: 835,
   },
 };
 
