@@ -42,7 +42,7 @@ const galleryItems = {
     src: "assets/app/dashboard.png",
     alt: "Dashboard de LuxIA con un resumen del trabajo",
     width: 689,
-    height: 520,
+    height: 430,
   },
   causas: {
     src: "assets/app/causas.png",
@@ -54,7 +54,7 @@ const galleryItems = {
     src: "assets/app/agenda.png",
     alt: "Agenda de LuxIA con calendario de audiencias y fechas",
     width: 668,
-    height: 735,
+    height: 849,
   },
   documentos: {
     src: "assets/app/documentos.png",
@@ -138,6 +138,7 @@ if (teamGrid) {
 
 const galleryImage = document.querySelector("[data-gallery-image]");
 const galleryTabs = [...document.querySelectorAll("[data-gallery-tab]")];
+let galleryChangeTimer;
 
 galleryTabs.forEach((tab, tabIndex) => {
   tab.addEventListener("click", () => {
@@ -151,8 +152,9 @@ galleryTabs.forEach((tab, tabIndex) => {
       otherTab.tabIndex = selected ? 0 : -1;
     });
 
+    window.clearTimeout(galleryChangeTimer);
     galleryImage.classList.add("is-changing");
-    window.setTimeout(
+    galleryChangeTimer = window.setTimeout(
       () => {
         galleryImage.src = item.src;
         galleryImage.alt = item.alt;
