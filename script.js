@@ -4,7 +4,9 @@ const teamMembers = [
     name: "Santino Cerio",
     role: "Project Manager, tester y diseñador de IA",
     initials: "SC",
-    photo: null,
+    photo: "assets/team/santino-cerio-web.jpg",
+    photoAlt: "Retrato de Santino Cerio, integrante del equipo de LuxIA",
+    photoPosition: "23%",
     specialties: ["Producto", "Calidad", "IA"],
     accent: "#d3b46f",
   },
@@ -13,7 +15,9 @@ const teamMembers = [
     name: "Exequiel Kelezuki",
     role: "Backend Developer",
     initials: "EK",
-    photo: null,
+    photo: "assets/team/exequiel-kelezuki-web.jpg",
+    photoAlt: "Retrato de Exequiel Kelezuki, integrante del equipo de LuxIA",
+    photoPosition: "22%",
     specialties: ["Backend", "Datos", "Arquitectura"],
     accent: "#72a8e8",
   },
@@ -22,7 +26,9 @@ const teamMembers = [
     name: "Lautaro Coll",
     role: "Frontend Developer",
     initials: "LC",
-    photo: null,
+    photo: "assets/team/lautaro-coll-web.jpg",
+    photoAlt: "Retrato de Lautaro Coll, integrante del equipo de LuxIA",
+    photoPosition: "15%",
     specialties: ["Frontend", "Interacción", "Accesibilidad"],
     accent: "#63bba7",
   },
@@ -31,7 +37,9 @@ const teamMembers = [
     name: "Victoria Berg",
     role: "Diseñadora UX/UI",
     initials: "VB",
-    photo: null,
+    photo: "assets/team/victoria-berg-web.jpg",
+    photoAlt: "Retrato de Victoria Berg, integrante del equipo de LuxIA",
+    photoPosition: "21%",
     specialties: ["UX", "Interfaz", "Sistemas"],
     accent: "#cb8ea9",
   },
@@ -39,28 +47,20 @@ const teamMembers = [
 
 const galleryItems = {
   dashboard: {
-    src: "assets/app/dashboard.png",
+    src: "assets/app/dashboard-mobile.png",
     alt: "Dashboard de LuxIA con un resumen del trabajo",
-    width: 689,
-    height: 840,
   },
   causas: {
-    src: "assets/app/causas.png",
+    src: "assets/app/causas-mobile.png",
     alt: "Vista de causas de LuxIA con controles para organizar expedientes",
-    width: 674,
-    height: 843,
   },
   agenda: {
-    src: "assets/app/agenda.png",
+    src: "assets/app/agenda-mobile.png",
     alt: "Agenda de LuxIA con calendario de audiencias y fechas",
-    width: 668,
-    height: 849,
   },
   documentos: {
-    src: "assets/app/documentos.png",
+    src: "assets/app/documentos-mobile.png",
     alt: "Vista documental de LuxIA con controles de búsqueda y carga",
-    width: 667,
-    height: 835,
   },
 };
 
@@ -118,7 +118,7 @@ if (teamGrid) {
             <div class="team-portrait">
               ${
                 member.photo
-                  ? `<img src="${member.photo}" alt="Fotografía de ${member.name}" loading="lazy" />`
+                  ? `<img src="${member.photo}" alt="${member.photoAlt}" width="900" height="1200" loading="lazy" decoding="async" style="--photo-position: ${member.photoPosition}" />`
                   : `<span class="team-initials" aria-label="Iniciales de ${member.name}">${member.initials}</span>`
               }
             </div>
@@ -138,7 +138,6 @@ if (teamGrid) {
 
 const galleryImage = document.querySelector("[data-gallery-image]");
 const galleryTabs = [...document.querySelectorAll("[data-gallery-tab]")];
-let galleryChangeTimer;
 
 galleryTabs.forEach((tab, tabIndex) => {
   tab.addEventListener("click", () => {
@@ -152,18 +151,8 @@ galleryTabs.forEach((tab, tabIndex) => {
       otherTab.tabIndex = selected ? 0 : -1;
     });
 
-    window.clearTimeout(galleryChangeTimer);
-    galleryImage.classList.add("is-changing");
-    galleryChangeTimer = window.setTimeout(
-      () => {
-        galleryImage.src = item.src;
-        galleryImage.alt = item.alt;
-        galleryImage.width = item.width;
-        galleryImage.height = item.height;
-        galleryImage.classList.remove("is-changing");
-      },
-      reducedMotion ? 0 : 160,
-    );
+    galleryImage.src = item.src;
+    galleryImage.alt = item.alt;
   });
 
   tab.addEventListener("keydown", (event) => {
