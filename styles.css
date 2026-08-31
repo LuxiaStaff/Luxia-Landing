@@ -1684,6 +1684,30 @@ section[id] {
 }
 
 @media (max-width: 680px) {
+  .feature-accent {
+    position: relative;
+    min-height: 350px;
+    padding-bottom: 115px;
+  }
+
+  .feature-accent h3,
+  .feature-accent p,
+  .feature-accent .feature-number,
+  .feature-accent .feature-icon {
+    position: relative;
+    z-index: 2;
+  }
+
+  .feature-accent .sound-wave {
+    right: 24px;
+    bottom: 24px;
+    left: auto;
+    width: 120px;
+    height: 55px;
+    z-index: 1;
+    pointer-events: none;
+  }
+
   .container { width: min(calc(100% - 30px), var(--container)); }
   .section { padding: 76px 0; }
   .section-heading h2,
