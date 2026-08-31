@@ -101,6 +101,10 @@ button {
   padding: 120px 0;
 }
 
+section[id] {
+  scroll-margin-top: 110px;
+}
+
 .eyebrow {
   display: flex;
   gap: 10px;
